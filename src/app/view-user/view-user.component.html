@@ -1,0 +1,55 @@
+<div class="row">
+  <h1>View User</h1>
+  <div class="col-md-12">
+    <div class="row" >
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Mobile Number</th>
+          <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let user of users;let i = index;">
+          <th scope="row">{{i+1}}</th>
+          <td>{{user.first_name}}</td>
+          <td>{{user.last_name}}</td>
+          <td>{{user.email}}</td>
+          <td (click)="delete(user.id)">delete</td>
+          <td (click)="getUserDetails(user.id)">Edit</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div bsModal #autoShownModal="bs-modal"
+     class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-auto-name">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="dialog-auto-name" class="modal-title pull-left">Update User Price</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="hideModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body"  *ngIf="updateUserObj">
+        <mat-form-field class="example-full-width full-width">
+          <input matInput placeholder="First Name" [(ngModel)]="updateUserObj.first_name">
+        </mat-form-field>
+        <mat-form-field class="example-full-width full-width">
+          <input matInput placeholder="First Name" [(ngModel)]="updateUserObj.last_name">
+        </mat-form-field>
+        <mat-form-field class="example-full-width full-width">
+          <input matInput placeholder="First Name" [(ngModel)]="updateUserObj.email">
+        </mat-form-field>
+        <button class="flot-r" mat-raised-button color="primary" (click)="edit()">Submit</button>
+      </div>
+    </div>
+  </div>
+
+</div>

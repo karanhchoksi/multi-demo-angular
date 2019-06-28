@@ -1,0 +1,7 @@
+<tr *ngFor="let user of users;let i = index;">
+  <th scope="row">{{i+1}}</th>
+  <td>{{user.first_name}}</td>
+  <td>{{user.last_name}}</td>
+  <td>{{user.email}}</td>
+  <td (click)="delete(user.id)">delete</td>
+</tr>
